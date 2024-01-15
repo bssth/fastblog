@@ -1,0 +1,16 @@
+{
+    "name": "mikechip/myblog",
+    "description": "Blogging engine for myself",
+    "type": "project",
+    "require": {
+        "mongodb/mongodb": "^1.4",
+        "jenssegers/proxy": "^3.0",
+        "altmetric/mongo-session-handler": "^2.1",
+        "ext-mongodb": "^1.5",
+        "ext-mbstring": "^7.2",
+        "thepixeldeveloper/sitemap": "^5.1"
+    },
+    "autoload": {
+        "psr-4": {"FastBlog\\": "classes/"}
+    }
+}

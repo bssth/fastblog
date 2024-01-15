@@ -1,0 +1,23 @@
+RewriteEngine On
+RewriteBase /
+
+<Files .*>
+    Order Deny,Allow
+    Deny From All
+</Files>
+
+RewriteCond %{HTTP_HOST} !=""
+RewriteCond %{HTTP_HOST} !=blog.local
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteCond %{HTTPS}s ^on(s)|
+RewriteRule ^ http%1://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+RewriteCond %{REQUEST_URI} \.(json|lock|config|htaccess)$
+RewriteRule .* index.php [PT]
+
+RewriteCond %{REQUEST_URI} (/controller|/vendor|/classes|/config.php)
+RewriteRule .* index.php [PT]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule .* index.php [PT]
